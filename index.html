@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Marvin AI Web AR Test</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer@latest/dist/model-viewer.js"
+      
+    >
+
+    </script>
+    <script>
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const modelViewer = document.querySelector("model-viewer");
+
+        let rotation = 0;
+     function rotateModel() {
+     modelViewer.cameraOrbit = `${rotation}deg 60deg 3m`; 
+     rotation += 0.7;
+     requestAnimationFrame(rotateModel);
+}
+      
+      modelViewer.cameraControls = true;
+      rotateModel(); // Start the rotation
+});
+    </script>
+  </head>
+  <body>
+    <model-viewer
+      auto-rotate src="https://cdn.glitch.global/3a1d1a1d-b284-4af4-8659-bbc460552df2/finaltiaagc.glb?v=1705985476130"
+      ios-src="https://cdn.glitch.global/3a1d1a1d-b284-4af4-8659-bbc460552df2/3dpea%20(1).usdz?v=1705985505985"
+      ar-placement="floor"
+      ar-scale="auto"
+      shadow-intensity="50"
+      shadow-softness="40"
+      alt="A 3D model of an astronaut"
+      interaction-prompt="auto"
+      magic-leap
+    >
+    </model-viewer>
+  </body>
+</html>
+
